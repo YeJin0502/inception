@@ -5,13 +5,8 @@ sed -ie 's/#port/port/g' /etc/mysql/mariadb.conf.d/50-server.cnf
 
 if [ ! -d /var/lib/mysql/$DB_NAME ]; then
   service mysql start
-  mysql -e "\
-    CREATE DATABASE IF NOT EXISTS ${DB_NAME} DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci; \
-    CREATE USER '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}'; \
-    GRANT ALL ON ${DB_NAME}.* TO '${DB_USER}'@'%'; \
-    ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}'; \
-    FLUSH PRIVILEGES; \
-    "
+  apt-get install -y gettext-base
+  envsubst < /tmp/create_mysql_db.sql | mysql
   mysqladmin --user=root --password=$DB_ROOT_PASSWORD
   service mysql stop
 fi

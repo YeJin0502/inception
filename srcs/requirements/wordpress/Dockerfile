@@ -1,7 +1,6 @@
 FROM debian:buster
 
 COPY 		/tools/setup_wp.sh /tmp/
-COPY        /conf/wp-config.php /tmp/
 
 RUN			apt-get update
 RUN			apt-get install -y \
