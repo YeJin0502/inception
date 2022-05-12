@@ -18,10 +18,10 @@ rm_network:
 rm_images:
 	- docker rmi -f $$(docker images -qa)
 rm_data:
-	rm -rf /Users/yejsong/data/wp
-	rm -rf /Users/yejsong/data/db
-	mkdir /Users/yejsong/data/wp
-	mkdir /Users/yejsong/data/db
+	rm -rf /home/yejsong/data/wp
+	rm -rf /home/yejsong/data/db
+	mkdir /home/yejsong/data/wp
+	mkdir /home/yejsong/data/db
 
 up:
 	docker-compose ./srcs/docker-compose.yml up -d

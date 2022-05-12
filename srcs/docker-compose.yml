@@ -53,10 +53,10 @@ volumes:
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/Users/yejsong/data/wp'
+            device: '/home/yejsong/data/wp'
     db_vol:
         driver: local
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/Users/yejsong/data/db'
+            device: '/home/yejsong/data/db'
