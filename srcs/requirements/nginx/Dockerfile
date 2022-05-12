@@ -11,7 +11,6 @@ RUN         openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 \
             -keyout /etc/ssl/private/yejsong.key -out /etc/ssl/certs/yejsong.crt
 
 COPY        ./conf/nginx.conf       /etc/nginx/nginx.conf
-COPY        ./conf/hosts            /etc/hosts
 
 EXPOSE      443
 
