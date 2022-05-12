@@ -1,7 +1,7 @@
 DCFILE = ./srcs/docker-compose.yml
 
 all:
-	bash ./srcs/requirements/nginx/conf/hosts.sh
+	bash ./srcs/requirements/tools/hosts.sh
 	docker-compose -f $(DCFILE) build
 	docker-compose -f $(DCFILE) up -d
 

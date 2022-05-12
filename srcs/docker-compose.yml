@@ -1,10 +1,10 @@
-version: '3.3'
+version: '3.7'
 
 services:
     mariadb:
         container_name: mariadb
         build: ./requirements/mariadb
-        #init: true
+        init: true
         restart: always
         networks:
             - intra
@@ -16,7 +16,7 @@ services:
     nginx:
         container_name: nginx
         build: ./requirements/nginx/
-        #init: true
+        init: true
         restart: always
         depends_on:
          - wordpress
@@ -32,7 +32,7 @@ services:
     wordpress:
         container_name: wordpress
         build: ./requirements/wordpress/
-        #init: true
+        init: true
         restart: always
         depends_on:
          - mariadb
