@@ -1,10 +1,10 @@
-version: '3.7'
+version: '3.3'
 
 services:
     mariadb:
         container_name: mariadb
         build: ./requirements/mariadb
-        init: true
+        #init: true
         restart: always
         networks:
             - intra
@@ -16,35 +16,31 @@ services:
     nginx:
         container_name: nginx
         build: ./requirements/nginx/
-        init: true
+        #init: true
         restart: always
         depends_on:
          - wordpress
         ports:
             - "443:443"
-        volumes:
-            - data:/var/www/html
         networks:
             - intra
         tty: true
         volumes:
-         - wp_vol:/var/www/
+            - wp_vol:/var/www/wordpress
         env_file: .env
 
     wordpress:
         container_name: wordpress
         build: ./requirements/wordpress/
-        init: true
+        #init: true
         restart: always
         depends_on:
          - mariadb
-        volumes:
-            - data:/var/www/html
         networks:
             - intra
         tty: true
         volumes:
-         - wp_vol:/var/www/
+            - wp_vol:/var/www/wordpress
         env_file: .env
 
 networks:
