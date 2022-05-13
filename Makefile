@@ -1,6 +1,8 @@
 DCFILE = ./srcs/docker-compose.yml
 
 all:
+	mkdir /home/yejsong/data/wp
+	mkdir /home/yejsong/data/db
 	bash ./srcs/requirements/tools/hosts.sh
 	docker-compose -f $(DCFILE) build
 	docker-compose -f $(DCFILE) up -d
@@ -20,8 +22,6 @@ rm_images:
 rm_data:
 	rm -rf /home/yejsong/data/wp
 	rm -rf /home/yejsong/data/db
-	mkdir /home/yejsong/data/wp
-	mkdir /home/yejsong/data/db
 
 up:
 	docker-compose ./srcs/docker-compose.yml up -d
